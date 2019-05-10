@@ -28,6 +28,9 @@ public class server implements Runnable {
             try {
                 fromclient = servers.accept();
                 System.out.println("[INFO] Client connected");
+                // hmm... Is it works?
+                //this code was writed without compilation
+                //clientAccept(fromclient);
 
             }
             catch (Exception e) {
@@ -35,10 +38,11 @@ public class server implements Runnable {
             }
         }
     }
-    /*public void clientAccept() {
+    // don't touch my trash! I did not test it!
+    public void clientAccept(Socket fromclient) {
         BufferedReader in;
         PrintWriter out;
         in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
         out = new PrintWriter(fromclient.getOutputStream(),true);
-    }*/
+    }
 }
