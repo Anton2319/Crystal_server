@@ -4,6 +4,7 @@ import java.net.*;
 import java.util.Scanner;
 
 public class server implements Runnable {
+  private boolean isActive = true;
    public void run (){
         int port = 4050;
         System.out.println("Crystal server v. 0.01 development");
@@ -23,15 +24,15 @@ public class server implements Runnable {
             System.out.println("[INFO] Waiting for a client...");
             System.out.println("Enter your commands here:");
         String command = null;
-        commandlistener cmdcommand = new commandlistener();
-        while(true) {
+        //commandlistener cmdcommand = new commandlistener();
+        while(isActive) {
             try {
                 fromclient = servers.accept();
                 System.out.println("[INFO] Client connected");
                 // hmm... Is it works?
                 //this code was writed without compilation
                 try {
-                //clientAccept(fromclient);
+                clientAccept(fromclient);
                 }
                 catch (Exception e) {
                  
@@ -48,7 +49,13 @@ public class server implements Runnable {
     public void clientAccept(Socket fromclient) {
         BufferedReader in;
         PrintWriter out;
-        in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
-        out = new PrintWriter(fromclient.getOutputStream(),true);
-    }
+        try {
+            in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
+            out = new PrintWriter(fromclient.getOutputStream(), true);
+        }
+        catch (Exception e) {
+
+        }
+   }
+
 }
