@@ -30,7 +30,13 @@ public class server implements Runnable {
                 System.out.println("[INFO] Client connected");
                 // hmm... Is it works?
                 //this code was writed without compilation
+                try {
                 //clientAccept(fromclient);
+                }
+                catch (Exception e) {
+                 
+                }
+                
 
             }
             catch (Exception e) {
